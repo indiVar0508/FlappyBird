@@ -1,7 +1,7 @@
 import pygame 
 import random
 
-class pipes:
+class Pipes:
 	
 	def __init__(self, gameWidth, gameHeight,offset):
 		self.pipeLength = 500
@@ -13,8 +13,8 @@ class pipes:
 		self.space = 150
 		self.speed = 5
 		self.bottom_top_y = self.top_bottom_y + self.space + self.pipeLength
-		self.topPipe = pygame.image.load('Resources\\Pipes\\pipetop.png')
-		self.bottomPipe = pygame.image.load('Resources\\Pipes\\pipebottom.png')
+		self.topPipe = pygame.image.load('Resources/Pipes/pipetop.png')
+		self.bottomPipe = pygame.image.load('Resources/Pipes/pipebottom.png')
 
 	def showPipes(self, gameDisplay):
 		gameDisplay.blit(self.topPipe, (self.x, self.top_bottom_y))

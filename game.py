@@ -1,7 +1,8 @@
-from Pipes import *
-import time
+import random
+import pygame
+from pipes import Pipes
 import numpy as np
-from Bird import *
+from bird.Bird import Bird
 
 class flappyBird:
 	def __init__(self):
@@ -12,12 +13,12 @@ class flappyBird:
 		self.gameHeight = 500
 		self.gameDisplay = pygame.display.set_mode((self.gameWidth, self.gameHeight))
 		pygame.display.set_caption('FlappyBird')
-		self.background = pygame.image.load('Resources\\Backgrounds\\background'+self.Backgrounds[self.indexBackground])
+		self.background = pygame.image.load('Resources/Backgrounds/background'+self.Backgrounds[self.indexBackground])
 		self.fps = pygame.time.Clock()
 		self.score = 0
 		self.frameRate = 50
 		self.bird = Bird(self.gameWidth, self.gameHeight) 
-		self.pipes = [pipes(self.gameWidth, self.gameHeight,50),pipes(self.gameWidth, self.gameHeight,300)]
+		self.pipes = [Pipes(self.gameWidth, self.gameHeight,50),Pipes(self.gameWidth, self.gameHeight,300)]
 
 	def makeobjMsg(self, msg, fontD,color = (0, 0, 0)):
 		return fontD.render(msg, True, color), fontD.render(msg, True, color).get_rect()
@@ -48,6 +49,7 @@ class flappyBird:
 					if event.key == pygame.K_s:
 						return
 			self.gameDisplay.fill((51, 51, 51))
+			self.message(msg = 'Use SpaceBar to jump',color = (255, 255, 255), fontSize = 30, xpos = self.gameWidth // 2 - 160, ypos = self.gameHeight // 2 - 35)
 			self.message(msg = 'Press S to start.!',color = (255, 255, 255), fontSize = 30, xpos = self.gameWidth // 2 - 120, ypos = self.gameHeight // 2)
 			pygame.display.update()
 
@@ -93,7 +95,10 @@ class flappyBird:
 			pygame.display.flip() 
 			# print('dead')
 
-if __name__ == '__main__':
+def init_game():
 	game = flappyBird()
 	game.pauseGame()
 	game.play()
+
+if __name__ == '__main__':
+	init_game()

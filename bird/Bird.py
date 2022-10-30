@@ -8,7 +8,7 @@ class Bird:
 		self.indexBird = random.randint(0, len(self.birds)-1)
 		self.y = gameHeight // 2
 		self.gameHeight = gameHeight
-		self.bird = pygame.image.load('Resources\\Characters\\' + self.birds[self.indexBird])
+		self.bird = pygame.image.load('Resources/Characters/' + self.birds[self.indexBird])
 		self.gravity = 7
 		self.antiGravity = -60
 		self.velocity = 0
